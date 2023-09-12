@@ -11,7 +11,7 @@ public class LibraryManager {
         library.addPublication(new Publication("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 1997));
 
         // Add at least one Patron to the Library with a name and an ID
-        Patron patron1 = new Patron("John", 1); // Provide both name and ID
+        Patron patron1 = new Patron("Avi", 1); // Provide both name and ID
         library.addPatron(patron1);
 
         // Print the library
