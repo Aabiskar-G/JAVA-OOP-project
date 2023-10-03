@@ -65,7 +65,7 @@ public class LibraryManager {
         System.out.println("==========");
         System.out.println("Main Menu");
         System.out.println("==========\n");
-        System.out.println("Welcome to The Library at Alexandria (Texas)\n");
+        System.out.println("Welcome to The Library at Kathmandu\n");
         System.out.println("0) Exit");
         System.out.println("1) List");
         System.out.println("2) Add Publication or Video");
