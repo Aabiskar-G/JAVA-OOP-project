@@ -78,12 +78,16 @@ public class LibraryManager {
      * Populates the initial library with some example publications and videos.
      */
     private static void populateInitialLibrary() {
-        library.addPublication(new Publication("The Cat in the Hat", "Dr. Seuss", 1957));
-        library.addPublication(new Publication("The Firm", "John Grisham", 1992));
-        library.addPublication(new Publication("Foundation", "Isaac Asimov", 1951));
-        library.addPublication(new Video("Citizen Kane", "Orson Welles", 1941, 119));
-        library.addPublication(new Video("Star Wars", "George Lucas", 1977, 121));
-        library.addPublication(new Video("七人の侍 (Seven Samurai)", "Akira Kurosawa", 1954, 207));
+        // Add 3 books to the library
+        library.addPublication(new Publication("To Kill a Mockingbird", "Harper Lee", 1960));
+        library.addPublication(new Publication("1984", "George Orwell", 1949));
+        library.addPublication(new Publication("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 1997));
+        
+         // Add 3 videos to the library
+        library.addPublication(new Video("The Matrix", "Wachowskis", 1999, 136));
+        library.addPublication(new Video("Inception", "Christopher Nolan", 2010, 148));
+        library.addPublication(new Video("Avatar", "James Cameron", 2009, 162));
+
     }
 
     /**
