@@ -1,4 +1,8 @@
+package mdi;
+
 import java.util.Scanner;
+
+import library.*;
 
 public class LibraryManager {
     public static void main(String[] args) {
@@ -9,6 +13,11 @@ public class LibraryManager {
         library.addPublication(new Publication("To Kill a Mockingbird", "Harper Lee", 1960));
         library.addPublication(new Publication("1984", "George Orwell", 1949));
         library.addPublication(new Publication("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 1997));
+        
+         // Add 3 videos to the library
+        library.addPublication(new Video("The Matrix", "Wachowskis", 1999, 136));
+        library.addPublication(new Video("Inception", "Christopher Nolan", 2010, 148));
+        library.addPublication(new Video("Avatar", "James Cameron", 2009, 162));
 
         // Add at least one Patron to the Library with a name and an ID
         Patron patron1 = new Patron("Avi", 1); // Provide both name and ID
@@ -40,8 +49,8 @@ public class LibraryManager {
             // Print the library again
             System.out.println(library);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Index Error");
-            System.out.println(library);
+            System.err.println("Index Error");
+            System.err.println(library);
         }
         scanner.close();
     }
