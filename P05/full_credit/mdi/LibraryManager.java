@@ -24,7 +24,7 @@ public class LibraryManager {
      * @param args The command-line arguments (not used in this program).
      */
     public static void main(String[] args) {
-        library = new Library("The Library at Alexandria (Texas)");
+        library = new Library("The Library at Kathmandu");
         scanner = new Scanner(System.in);
 
         populateInitialLibrary();
