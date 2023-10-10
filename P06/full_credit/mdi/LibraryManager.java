@@ -5,8 +5,13 @@ import library.Publication;
 import library.Video;
 import library.InvalidRuntimeException;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
-import java.io.*;
+
 
 /**
  * The LibraryManager class represents a simple library management system.
@@ -212,17 +217,20 @@ public class LibraryManager {
     }
     
     
-    private static void openLibrary() 
-    {
+	private static void openLibrary() 
+	{
 	    System.out.print("Enter the filename to open: ");
 	    String filename = scanner.nextLine();
 	    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-		library.load(reader); // Corrected method name
+		library.load(reader); 
 		System.out.println("Library opened!! " + filename);
+	    } catch (NumberFormatException e) {
+		System.err.println("Error: Issue with the content format in the file. Details: " + e.getMessage());
 	    } catch (IOException e) {
-		System.err.println("Error: Unable to open the library from the file.");
+		System.err.println("Error: Unable to open the library from the file. Details: " + e.getMessage());
 	    }
 	}
+
 
 
     private static void saveLibrary() {

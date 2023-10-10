@@ -78,12 +78,28 @@ public class Publication {
         loanedTo = null;
         dueDate = null;
     }
+    
+    public void save(BufferedWriter bw) throws IOException {
+        // Save the title, author, and copyright year
+        bw.write(title+ "\n");
+        bw.write(author + "\n");
+        bw.write("" + copyright + "\n");
 
-    protected String toStringBuilder(String pre, String mid) {
-        return pre + " \"" + title + "\" by " + author + ", copyright " + copyright
-                + mid
-                + ((loanedTo != null) ? "\n     : loaned to " + loanedTo + " until " + dueDate : "");
+        // Check if the publication is checked in or out
+        if (loanedTo == null) {
+            bw.write("checked in\n");
+        } else {
+            // Publication is checked out
+            bw.write("checked out\n");
+            bw.write(loanedTo + "\n");
+            bw.newLine();
+            bw.write(dueDate.toString() + "\n"); // Save the due date as a string
+            
+        }
     }
+
+
+    
     
     /**
      * Formats the fields of the publication in human-readable form.
@@ -91,32 +107,16 @@ public class Publication {
      * @returns     the string representation of the publication
      * @since       1.0
      */
-    public void save(BufferedWriter bw) throws IOException {
-        // Save the title, author, and copyright year
-        bw.write(title);
-        bw.newLine();
-        bw.write(author);
-        bw.newLine();
-        bw.write(Integer.toString(copyright));
-        bw.newLine();
-
-        // Check if the publication is checked in or out
-        if (loanedTo == null) {
-            bw.write("checked in");
-        } else {
-            // Publication is checked out
-            bw.write("checked out");
-            bw.newLine();
-            bw.write(loanedTo);
-            bw.newLine();
-            bw.write(dueDate.toString()); // Save the due date as a string
-            bw.newLine();
-        }
-    }
-
+    
     @Override
     public String toString() {
         return toStringBuilder("Book", "");
+    }
+    
+    protected String toStringBuilder(String pre, String mid) {
+        return pre + " \"" + title + "\" by " + author + ", copyright " + copyright
+                + mid
+                + ((loanedTo != null) ? "\n     : loaned to " + loanedTo + " until " + dueDate : "");
     }
 
     private String title;

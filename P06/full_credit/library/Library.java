@@ -17,22 +17,20 @@ public class Library {
     }
 
     public Library(BufferedReader br) throws IOException {
+    	this.name = br.readLine();
         publications = new ArrayList<>();
         videos = new ArrayList<>();
 
-        String line;
-        while ((line = br.readLine()) != null) {
-            if (line.equals("Publication")) {
-                String title = br.readLine();
-                String author = br.readLine();
-                int year = Integer.parseInt(br.readLine());
-                publications.add(new Publication(title, author, year));
-            } else if (line.equals("Video")) {
-                String title = br.readLine();
-                String director = br.readLine();
-                int year = Integer.parseInt(br.readLine());
-                int runtime = Integer.parseInt(br.readLine());
-                videos.add(new Video(title, director, year, runtime));
+        int numberOfPublications = Integer.parseInt(br.readLine());
+        for (int i = 0; i < numberOfPublications; i++) {
+            String type = br.readLine().toLowerCase();
+
+            if (type.equals("Publication")) {
+                Publication publication = new Publication(br);
+                publications.add(publication);
+            } else if (type.equals("Video")) {
+                Video video = new Video(br);
+                videos.add(video);
             }
         }
     }
@@ -64,21 +62,19 @@ public class Library {
         bw.newLine();
 
         // Save the number of publications in the library
-        bw.write(Integer.toString(publications.size()));
+        bw.write(Integer.toString(publications.size() + videos.size()));
         bw.newLine();
+       
 
         // Iterate over the publications and save them
         for (Publication publication : publications) {
-            if (publication instanceof Video) {
-                bw.write("video");
-            } else if (publication instanceof Publication) {
-                bw.write("publication");
-            }
-            bw.newLine();
-
-            // Tell the object to write itself to the stream
+            bw.write("publication");
             publication.save(bw);
         }
+        
+       for (Video video : videos){
+            bw.write("video\n");
+            video.save(bw);}
     }
     
     public void load(BufferedReader br) throws IOException
