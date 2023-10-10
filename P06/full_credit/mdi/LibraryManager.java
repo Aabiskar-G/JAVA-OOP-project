@@ -91,18 +91,15 @@ public class LibraryManager {
     /**
      * Populates the initial library with some example publications and videos.
      */
-    private static void populateInitialLibrary() {
-        // Add 3 books to the library
-        library.addPublication(new Publication("To Kill a Mockingbird", "Harper Lee", 1960));
-        library.addPublication(new Publication("1984", "George Orwell", 1949));
-        library.addPublication(new Publication("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 1997));
-        
-         // Add 3 videos to the library
-        library.addPublication(new Video("The Matrix", "Wachowskis", 1999, 136));
-        library.addPublication(new Video("Inception", "Christopher Nolan", 2010, 148));
-        library.addPublication(new Video("Avatar", "James Cameron", 2009, 162));
-
-    }
+	private static void populateInitialLibrary() {
+	    
+	    try (BufferedReader reader = new BufferedReader(new FileReader("test.lms"))) {
+		library.load(reader);
+		System.out.println("Library initialized from ");
+	    } catch (IOException e) {
+		System.err.println("Error: Unable to populate the library from test.lms. " + e.getMessage());
+	    }
+	}
 
     /**
      * Lists the publications and videos in the library.

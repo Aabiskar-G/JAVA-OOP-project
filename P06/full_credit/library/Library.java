@@ -20,7 +20,8 @@ public class Library {
     	this.name = br.readLine();
         publications = new ArrayList<>();
         videos = new ArrayList<>();
-
+        
+	
         int numberOfPublications = Integer.parseInt(br.readLine());
         for (int i = 0; i < numberOfPublications; i++) {
             String type = br.readLine().toLowerCase();
@@ -68,12 +69,12 @@ public class Library {
 
         // Iterate over the publications and save them
         for (Publication publication : publications) {
-            bw.write("publication");
+            bw.write("Publication");
             publication.save(bw);
         }
         
        for (Video video : videos){
-            bw.write("video\n");
+            bw.write("Video\n");
             video.save(bw);}
     }
     
@@ -83,6 +84,7 @@ public class Library {
     	int numPublications = Integer.parseInt(br.readLine());
     	
     	publications.clear();
+    	videos.clear();
     	
     	for (int i = 0; i < numPublications; i++)
     	{
@@ -100,13 +102,23 @@ public class Library {
 	}
     }
 	    	
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder(name + "\n\n");
-        for (int i = 0; i < publications.size(); ++i)
-            sb.append("" + i + ") " + publications.get(i).toString() + "\n");
-        return sb.toString();
-    }
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder(name + "\n\n");
+	    
+	    int count = 0;
+	    
+	    // Iterate over publications
+	    for (Publication publication : publications){
+		sb.append(count++ + ") " + publication.toString() + "\n");
+	    }
+	    
+	    // Iterate over videos
+	    for (Video video : videos){
+		sb.append(count++ + ") " + video.toString() + "\n");
+	    }
+	    
+	    return sb.toString();
+	}
 }
 
