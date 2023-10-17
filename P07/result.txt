@@ -1,0 +1,355 @@
+FULL CREDIT
+===========
+
+QUESTION 1: Why is String[] args changed to a LinkedList in WordSearch.main? (Hint: Examine the WordSearch constructor!)
+ANS;	The WordSearch constructor takes a List<String> args as its parameter. Within the constructor, there are multiple operations involving removing elements from the beginning of the list (e.g., args.remove(0)). Removing an element from the beginning of an ArrayList (or other array-backed lists) is an O(n) operation because every subsequent element must be shifted. On the other hand, removing an element from the beginning of a LinkedList is an O(1) operation.
+
+By converting the String[] args to a LinkedList, the WordSearch constructor can perform these removal operations more efficiently, especially when the list is relatively long.
+
+
+
+
+QUESTION 2: How many puzzles did your machine need to solve with 1 thread to run for between 30 and 45 seconds: 
+ ANS: my machine need 1500 puzzle maximum to run between 30 to 45 seconds 
+
+
+
+
+QUESTION 3: Provide the output of 
+
+    time java WordSearch n 1000 ../puzzle??.txt 
+
+where n is 1 to 16 and 1000 is the number of puzzles specified in Question 2. NOTE: You can run all of these with a single bash command if you like (again, replace 1000 with your number of puzzles from Question 2):
+
+for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+
+Example Timing:
+
+ for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+1000 puzzles
+Thread 0: 0-999
+
+real	0m31.872s
+user	0m32.475s
+sys	0m0.224s
+
+1000 puzzles
+Thread 1: 500-999
+Thread 0: 0-499
+
+real	0m14.376s
+user	0m29.078s
+sys	0m0.229s
+
+...and so on
+
+
+
+YOUR Timing:
+1000 puzzles with 1 threads
+Thread 0: 0-999
+
+real	0m29.447s
+user	0m29.470s
+sys	0m0.839s
+
+1000 puzzles with 2 threads
+Thread 1: 500-999
+Thread 0: 0-499
+
+real	0m16.628s
+user	0m31.884s
+sys	0m0.570s
+
+1000 puzzles with 2 threads
+Thread 1: 500-999
+Thread 0: 0-499
+
+real	0m17.550s
+user	0m34.244s
+sys	0m0.447s
+
+1000 puzzles with 3 threads
+Thread 2: 667-999
+Thread 1: 334-666
+Thread 0: 0-333
+
+real	0m13.600s
+user	0m37.697s
+sys	0m0.816s
+
+
+1000 puzzles with 4 threads
+Thread 2: 500-749
+Thread 1: 250-499
+Thread 0: 0-249
+Thread 3: 750-999
+
+real	0m14.347s
+user	0m38.306s
+sys	0m0.763s
+
+
+1000 puzzles with 5 threads
+Thread 2: 400-599
+Thread 0: 0-199
+Thread 1: 200-399
+Thread 3: 600-799
+Thread 4: 800-999
+
+real	0m13.726s
+user	0m37.284s
+sys	0m0.693s
+
+
+
+1000 puzzles with 6 threads
+Thread 3: 501-667
+Thread 0: 0-166
+Thread 4: 668-833
+Thread 2: 334-500
+Thread 5: 834-999
+Thread 1: 167-333
+
+real	0m22.963s
+user	0m59.419s
+sys	0m1.429s
+
+1000 puzzles with 7 threads
+Thread 4: 572-714
+Thread 5: 715-857
+Thread 2: 286-428
+Thread 1: 143-285
+Thread 0: 0-142
+Thread 6: 858-999
+Thread 3: 429-571
+
+real	0m23.654s
+user	1m4.628s
+sys	0m1.441s
+
+
+1000 puzzles with 8 threads
+Thread 4: 500-624
+Thread 0: 0-124
+Thread 5: 625-749
+Thread 7: 875-999
+Thread 3: 375-499
+Thread 1: 125-249
+Thread 2: 250-374
+Thread 6: 750-874
+
+real	0m24.636s
+user	1m7.191s
+sys	0m1.434s
+
+
+
+1000 puzzles with 9 threads
+Thread 3: 334-444
+Thread 0: 0-111
+Thread 4: 445-555
+Thread 2: 223-333
+Thread 8: 889-999
+Thread 7: 778-888
+Thread 5: 556-666
+Thread 6: 667-777
+Thread 1: 112-222
+
+real	0m27.467s
+user	1m15.583s
+sys	0m1.313s
+
+1000 puzzles with 10 threads
+Thread 4: 400-499
+Thread 5: 500-599
+Thread 9: 900-999
+Thread 8: 800-899
+Thread 6: 600-699
+Thread 1: 100-199
+Thread 7: 700-799
+Thread 3: 300-399
+Thread 0: 0-99
+Thread 2: 200-299
+
+real	0m24.977s
+user	1m6.156s
+sys	0m1.571s
+
+
+1000 puzzles with 11 threads
+Thread 5: 455-545
+Thread 7: 637-727
+Thread 0: 0-90
+Thread 1: 91-181
+Thread 6: 546-636
+Thread 2: 182-272
+Thread 10: 910-999
+Thread 9: 819-909
+Thread 4: 364-454
+Thread 8: 728-818
+Thread 3: 273-363
+
+real	0m22.830s
+user	0m58.726s
+sys	0m1.687s
+
+
+
+1000 puzzles with 12 threads
+Thread 5: 419-501
+Thread 6: 502-584
+Thread 1: 84-167
+Thread 10: 834-916
+Thread 8: 668-750
+Thread 9: 751-833
+Thread 0: 0-83
+Thread 7: 585-667
+Thread 2: 168-251
+Thread 11: 917-999
+Thread 3: 252-335
+Thread 4: 336-418
+
+real	0m25.029s
+user	1m7.602s
+sys	0m1.756s
+
+
+1000 puzzles with 13 threads
+Thread 5: 385-461
+Thread 6: 462-538
+Thread 4: 308-384
+Thread 1: 77-153
+Thread 12: 924-999
+Thread 0: 0-76
+Thread 8: 616-692
+Thread 7: 539-615
+Thread 10: 770-846
+Thread 3: 231-307
+Thread 2: 154-230
+Thread 9: 693-769
+Thread 11: 847-923
+
+real	0m22.768s
+user	1m0.617s
+sys	0m1.778s
+
+
+1000 puzzles with 14 threads
+Thread 3: 216-287
+Thread 11: 787-857
+Thread 10: 716-786
+Thread 5: 360-431
+Thread 12: 858-928
+Thread 0: 0-71
+Thread 9: 645-715
+Thread 8: 574-644
+Thread 6: 432-502
+Thread 7: 503-573
+Thread 13: 929-999
+Thread 2: 144-215
+Thread 1: 72-143
+Thread 4: 288-359
+
+real	0m23.639s
+user	1m2.341s
+sys	0m1.999s
+
+
+
+1000 puzzles with 15 threads
+Thread 8: 536-602
+Thread 13: 868-933
+Thread 1: 67-133
+Thread 10: 670-735
+Thread 11: 736-801
+Thread 2: 134-200
+Thread 12: 802-867
+Thread 0: 0-66
+Thread 3: 201-267
+Thread 9: 603-669
+Thread 14: 934-999
+Thread 6: 402-468
+Thread 4: 268-334
+Thread 7: 469-535
+Thread 5: 335-401
+
+real	0m25.778s
+user	1m6.581s
+sys	0m1.546s
+
+
+
+1000 puzzles with 16 threads
+Thread 8: 504-565
+Thread 2: 126-188
+Thread 5: 315-377
+Thread 4: 252-314
+Thread 7: 441-503
+Thread 1: 63-125
+Thread 6: 378-440
+Thread 10: 628-689
+Thread 12: 752-813
+Thread 13: 814-875
+Thread 11: 690-751
+Thread 15: 938-999
+Thread 9: 566-627
+Thread 3: 189-251
+Thread 0: 0-62
+Thread 14: 876-937
+
+real	0m25.182s
+user	1m4.368s
+sys	0m1.572s
+
+
+
+
+
+
+
+
+
+QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program even slightly?  Why or why not?
+ANS: Adding more threads can speed up a program to a point, but after that, performance can decrease due to factors like hardware limitations, contention for shared resources, overhead of thread management, cache coherency issues, and memory constraints
+
+
+
+
+QUESTION 4: Does adding more threads increase the "system load" (sys), or is it constant regardless of the number of threads?  Why?
+ANS:  Increasing the number of threads can elevate the "system load" or system time. This is primarily because of context switching overhead, synchronization-related system calls, and the overhead of thread creation and destruction. The system load does not remain constant with the increase in threads and tends to grow, especially if thread count significantly exceeds the number of physical CPU cores.
+
+
+BONUS
+=====
+
+QUESTION 5: Time your thread pool version of WordSearch exactly as you did for the full credit version. Post your timings here.
+
+YOUR Timing:
+
+
+
+
+
+
+
+QUESTION 6: Is a thread pool faster, slower, or roughly equivalent in performance? 
+
+
+
+
+
+
+
+QUESTION 7: Compare your full credit and bonus solution code. Which do you believe is more supportable over a long lifetime of evolving hardware and environments?
+
+
+
+
+
+
+
+EXTREME BONUS
+=============
+
+QUESTION 8: Post your final timings here. (The "race" on Antares will determine the actual winner - this just lets me know you're competing!)
