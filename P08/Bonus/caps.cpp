@@ -3,10 +3,15 @@
 #include <vector>
 
 
+
+using std::vector;
+using std::cout;
+
+
 int main(int argc, char* argv[]) {
     // Create vectors
-    std::vector<std::string> caps; // on the stack
-    std::vector<std::string>* no_caps = new std::vector<std::string>; // on the heap
+    vector<std::string> caps; // on the stack
+    vector<std::string>* no_caps = new std::vector<std::string>; // on the heap
 
     // Iterate over the program arguments
     for (int i = 1; i < argc; i++) {
@@ -19,15 +24,15 @@ int main(int argc, char* argv[]) {
     }
 
     // Print capitalized arguments
-    std::cout << "Capitalized:" << std::endl;
+    cout << "Capitalized:" << std::endl;
     for (const auto& word : caps) {
-        std::cout << word << std::endl;
+        cout << word << std::endl;
     }
 
     // Print lowercase arguments
-    std::cout << "\n\nLower Case:" << std::endl;
+    cout << "\n\nLower Case:" << std::endl;
     for (const auto& word : *no_caps) {
-        std::cout << word << std::endl;
+        cout << word << std::endl;
     }
 
     delete no_caps; // Free memory allocated on the heap
