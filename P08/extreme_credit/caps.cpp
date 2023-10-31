@@ -4,22 +4,22 @@
 #include <algorithm>
 
 
-
-
 using std::cout;
 using std::vector;
 using std::sort;
 
 
 // Comparator function for sorting no_caps vector
-bool customCompare(const std::string& a, const std::string& b) {
+bool customCompare(const std::string& a, const std::string& b) 
+{
     if (a.length() == b.length()) {
         return a < b;  // If lengths are the same, sort by natural order
     }
     return a.length() < b.length();  // Sort by length otherwise
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) 
+{
     // Create vectors
     vector<std::string> caps; // on the stack
     vector<std::string>* no_caps = new vector<std::string>; // on the heap
@@ -29,7 +29,9 @@ int main(int argc, char* argv[]) {
         std::string arg(argv[i]);
         if (isupper(arg[0])) {
             caps.push_back(arg);
-        } else {
+        } 
+        else 
+        {
             no_caps->push_back(arg);
         }
     }
